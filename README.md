@@ -1,6 +1,6 @@
 Exp_Design_Group6
 
-This repository contains the code for the Experiment Design Course (Winter Term 2025) from Group 6.
+This repository contains the code for the Experiment Design Course (Winter Term 2024) from Group 6.
 
 As part of the project, we aim to reproduce the results of the paper:
 📄 "Everyone’s a Winner! On Hyperparameter Tuning of Recommendation Models".
