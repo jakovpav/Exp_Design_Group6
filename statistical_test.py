@@ -24,7 +24,7 @@ untuned_dict = {'ConvNeuMF': array([0.00331, 0.00593, 0.00329, 0.00618, 0.00536]
 
 def statistical_significance_test_mixed_labeled(dict_tuned: dict, dict_untuned: dict, alpha: float = 0.05) -> pd.DataFrame:
    
-"""
+    """
     Performs a Wilcoxon signed-rank test for paired comparisons (same model tuned vs. untuned)
     and a Mann-Whitney U test for independent comparisons (tuned vs. different untuned models).
     Presents the results as a labeled p-value matrix.
