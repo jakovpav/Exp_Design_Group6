@@ -22,7 +22,7 @@ untuned_dict = {'ConvNeuMF': array([0.00331, 0.00593, 0.00329, 0.00618, 0.00536]
  'NGCF': array([0.00101, 0.00106, 0.00079, 0.00111, 0.0013 ]),
  'ConvMf': array([0.00598, 0.00593, 0.00585, 0.00617, 0.00536])}
 
-def statistical_significance_test_mixed_labeled(dict_tuned: dict, dict_untuned: dict, alpha: float = 0.05) -> pd.DataFrame:
+def statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned, alpha = 0.05):
    
     """
     Performs a Wilcoxon signed-rank test for paired comparisons (same model tuned vs. untuned)
