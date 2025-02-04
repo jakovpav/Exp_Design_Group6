@@ -75,11 +75,11 @@ def statistical_significance_test_mixed_labeled(dict_tuned: dict, dict_untuned: 
     return p_value_matrix
 
 # Remove 'EASER' from the dictionaries
-ndcg_tuned.pop('EASER', None)
-ndcg_untuned.pop('EASER', None)
+dict_tuned.pop('EASER', None)
+dict_untuned.pop('EASER', None)
 
 # Run statistical test with labeled matrix
-p_value_matrix_mixed_labeled = statistical_significance_test_mixed_labeled(ndcg_tuned, ndcg_untuned)
+p_value_matrix_mixed_labeled = statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned)
 
 # Display the DataFrame
 print(p_value_matrix_mixed_labeled)
