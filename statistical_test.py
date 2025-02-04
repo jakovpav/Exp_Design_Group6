@@ -4,7 +4,7 @@ import scipy.stats as stats
 from statsmodels.stats.multitest import multipletests
 from collections import defaultdict
 
-tuned_dict = {'ConvNeuMF': np.array([0.02026, 0.02202, 0.02384, 0.02279, 0.02742]),
+dict_tuned = {'ConvNeuMF': np.array([0.02026, 0.02202, 0.02384, 0.02279, 0.02742]),
  'DMF': np.array([0.01203, 0.01412, 0.00907, 0.00725, 0.00765]),
  'MultiDAE': np.array([0.03238, 0.03149, 0.03044, 0.01042, 0.02924]),
  'MultiVAE': np.array([0.02746, 0.02431, 0.01797, 0.01751, 0.00536]),
@@ -13,7 +13,7 @@ tuned_dict = {'ConvNeuMF': np.array([0.02026, 0.02202, 0.02384, 0.02279, 0.02742
  'NGCF': np.array([0.01844, 0.00222, 0.00091, 0.002  , 0.01358]),
  'ConvMf': np.array([0.02658, 0.028  , 0.02797, 0.02951, 0.02942])}
 
-untuned_dict = {'ConvNeuMF': np.array([0.00331, 0.00593, 0.00329, 0.00618, 0.00536]),
+dict_untuned = {'ConvNeuMF': np.array([0.00331, 0.00593, 0.00329, 0.00618, 0.00536]),
  'DMF': np.array([0.00312, 0.00593, 0.0101 , 0.00875, 0.00224]),
  'MultiDAE': np.array([0.01466, 0.00733, 0.00354, 0.00373, 0.00384]),
  'MultiVAE': np.array([0.00596, 0.0059 , 0.00584, 0.00616, 0.00536]),
