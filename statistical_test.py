@@ -32,14 +32,12 @@ def statistical_significance_test(dict_tuned, dict_untuned, alpha = 0.05):
     # Iterate over all model pairs
     for model1 in dict_tuned:
         for model2 in dict_untuned:
-                stat, p_value = stats.mannwhitneyu(
-                    dict_tuned[model1], dict_untuned[model2], alternative="greater"
-                )
-
-            # Store results
-            results.append(p_value)
-            comparisons.append((f"{model1} (Tuned)", f"{model2} (Untuned)"))
-            p_value_matrix.loc[f"{model1} (Tuned)", f"{model2} (Untuned)"] = p_value
+           stat, p_value = stats.mannwhitneyu(dict_tuned[model1], dict_untuned[model2], alternative="greater")
+           
+           # Store results
+           results.append(p_value)
+           comparisons.append((f"{model1} (Tuned)", f"{model2} (Untuned)"))
+           p_value_matrix.loc[f"{model1} (Tuned)", f"{model2} (Untuned)"] = p_value
 
     # Apply Benjamini-Hochberg (FDR) correction to control Type I error
     corrected_p_values = multipletests(results, method='fdr_bh')[1]
