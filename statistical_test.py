@@ -33,11 +33,6 @@ def statistical_significance_test(dict_tuned, dict_untuned, alpha = 0.05):
     # Iterate over all model pairs
     for model1 in dict_tuned:
         for model2 in dict_untuned:
-            if model1 == model2:  # Paired test for same model tuned vs. untuned
-                stat, p_value = stats.wilcoxon(
-                    dict_tuned[model1], dict_untuned[model2], alternative="greater", method="exact"
-                )
-            else:  # Independent test for different models (same data, different algorithms)
                 stat, p_value = stats.mannwhitneyu(
                     dict_tuned[model1], dict_untuned[model2], alternative="greater"
                 )
