@@ -21,7 +21,3 @@ The following software versions were used:
 | **SciPy**     | 1.13.1   |
 | **Statsmodels** | 0.14.2 |
 | **Python**    | 3.9.7    |
-
----
- 
-*For more details, refer to the original paper.*  
