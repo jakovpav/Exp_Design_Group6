@@ -72,7 +72,7 @@ dict_untuned = {key: np.array(value) for key, value in dict_untuned.items()}
 p_value_matrix = statistical_significance_test(dict_tuned, dict_untuned)
 
 # Save DataFrame
-df.to_csv("p_value_matrix.csv", index=True)
+p_value_matrix.to_csv("p_value_matrix.csv", index=True)
 
 # Display the DataFrame
 print(p_value_matrix)
