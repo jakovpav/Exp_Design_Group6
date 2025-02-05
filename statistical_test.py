@@ -5,20 +5,22 @@ from statsmodels.stats.multitest import multipletests
 from collections import defaultdict
 import json
 
-def statistical_significance_test(dict_tuned, dict_untuned, alpha = 0.05):
+def statistical_significance_test(dict_tuned: dict[str, np.ndarray], dict_untuned: dict[str, np.ndarray], alpha: float = 0.05) -> pd.DataFrame:
    
     """
-    Performs a Mann-Whitney U test for comparisons (tuned vs. untuned models).
-    Presents the results as a labeled p-value matrix.
+    Performs a Mann-Whitney U test to compare each tuned model against each untuned model.
+    Applies Benjamini-Hochberg correction to control the false discovery rate.
 
     Args:
-        dict_tuned (dict): Model names as keys, lists of 5 CV scores as values (tuned models).
-        dict_untuned (dict): Model names as keys, lists of 5 CV scores as values (untuned models).
-        alpha (float): Significance level for statistical testing.
+        dict_tuned (dict[str, np.ndarray]): A dictionary where keys are model names, 
+            and values are NumPy arrays containing 5 cross-validation scores (tuned models).
+        dict_untuned (dict[str, np.ndarray]): A dictionary where keys are model names, 
+            and values are NumPy arrays containing 5 cross-validation scores (untuned models).
+        alpha (float, optional): The significance level for statistical testing. Defaults to 0.05.
 
     Returns:
-        pd.DataFrame: A matrix where rows (Tuned Models) and columns (Untuned Models)
-                      are labeled, and values are the p-values from the appropriate test.
+        pd.DataFrame: A p-value matrix where rows represent tuned models, columns represent 
+            untuned models, and values correspond to the corrected p-values from the Mann-Whitney U test.
     """
     
     comparisons = []
