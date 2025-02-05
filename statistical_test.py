@@ -3,24 +3,7 @@ import pandas as pd
 import scipy.stats as stats
 from statsmodels.stats.multitest import multipletests
 from collections import defaultdict
-
-dict_tuned = {'ConvNeuMF': np.array([0.02026, 0.02202, 0.02384, 0.02279, 0.02742]),
- 'DMF': np.array([0.01203, 0.01412, 0.00907, 0.00725, 0.00765]),
- 'MultiDAE': np.array([0.03238, 0.03149, 0.03044, 0.01042, 0.02924]),
- 'MultiVAE': np.array([0.02746, 0.02431, 0.01797, 0.01751, 0.00536]),
- 'NeuMF': np.array([0.02194, 0.01542, 0.02203, 0.0121 , 0.01001]),
- 'GMF': np.array([0.02472, 0.00878, 0.02248, 0.00532, 0.0124 ]),
- 'NGCF': np.array([0.01844, 0.00222, 0.00091, 0.002  , 0.01358]),
- 'ConvMf': np.array([0.02658, 0.028  , 0.02797, 0.02951, 0.02942])}
-
-dict_untuned = {'ConvNeuMF': np.array([0.00331, 0.00593, 0.00329, 0.00618, 0.00536]),
- 'DMF': np.array([0.00312, 0.00593, 0.0101 , 0.00875, 0.00224]),
- 'MultiDAE': np.array([0.01466, 0.00733, 0.00354, 0.00373, 0.00384]),
- 'MultiVAE': np.array([0.00596, 0.0059 , 0.00584, 0.00616, 0.00536]),
- 'NeuMF': np.array([0.00598, 0.00593, 0.00585, 0.00617, 0.00536]),
- 'GMF': np.array([0.00442, 0.00418, 0.00444, 0.00376, 0.00318]),
- 'NGCF': np.array([0.00101, 0.00106, 0.00079, 0.00111, 0.0013 ]),
- 'ConvMf': np.array([0.00598, 0.00593, 0.00585, 0.00617, 0.00536])}
+import json
 
 def statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned, alpha = 0.05):
    
@@ -73,6 +56,18 @@ def statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned, alpha 
         p_value_matrix.loc[model1, model2] = corrected_p_values[i]
 
     return p_value_matrix
+
+# Load the tuned data
+with open("tuned_results.json", "r") as file:
+    dict_tuned = json.load(file)
+# Convert lists to NumPy arrays
+dict_tuned = {key: np.array(value) for key, value in dict_tuned.items()}
+
+# Load the untuned data
+with open("untuned_results.json", "r") as file:
+    dict_untuned = json.load(file)
+# Convert lists to NumPy arrays
+dict_untuned = {key: np.array(value) for key, value in dict_untuned.items()}
 
 # Run statistical test with labeled matrix
 p_value_matrix_mixed_labeled = statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned)
