@@ -5,7 +5,7 @@ from statsmodels.stats.multitest import multipletests
 from collections import defaultdict
 import json
 
-def statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned, alpha = 0.05):
+def statistical_significance_test(dict_tuned, dict_untuned, alpha = 0.05):
    
     """
     Performs a Wilcoxon signed-rank test for paired comparisons (same model tuned vs. untuned)
@@ -41,7 +41,6 @@ def statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned, alpha 
                 stat, p_value = stats.mannwhitneyu(
                     dict_tuned[model1], dict_untuned[model2], alternative="greater"
                 )
-            print(dict_tuned[model1], dict_untuned[model2], p_value)
 
             # Store results
             results.append(p_value)
@@ -70,7 +69,11 @@ with open("untuned_results.json", "r") as file:
 dict_untuned = {key: np.array(value) for key, value in dict_untuned.items()}
 
 # Run statistical test with labeled matrix
-p_value_matrix_mixed_labeled = statistical_significance_test_mixed_labeled(dict_tuned, dict_untuned)
+p_value_matrix = statistical_significance_test(dict_tuned, dict_untuned)
+
+# Save DataFrame
+df.to_csv("p_value_matrix.csv", index=True)
 
 # Display the DataFrame
-print(p_value_matrix_mixed_labeled)
+print(p_value_matrix)
+
