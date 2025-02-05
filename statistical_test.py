@@ -8,8 +8,7 @@ import json
 def statistical_significance_test(dict_tuned, dict_untuned, alpha = 0.05):
    
     """
-    Performs a Wilcoxon signed-rank test for paired comparisons (same model tuned vs. untuned)
-    and a Mann-Whitney U test for independent comparisons (tuned vs. different untuned models).
+    Performs a Mann-Whitney U test for comparisons (tuned vs. untuned models).
     Presents the results as a labeled p-value matrix.
 
     Args:
